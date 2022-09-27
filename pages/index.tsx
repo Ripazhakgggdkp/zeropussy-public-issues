@@ -16,22 +16,31 @@ export default function Index({ issues }: Props) {
     <>
       <Layout>
         <Head>
-          <title>Next.js Blog Example with {CMS_NAME}</title>
+          <title>ZeroPussy Backlog</title>
         </Head>
+        <div className="text-8xl font-extralight mb-5 sticky top-0 bg-white opacity-100 p-5">
+          Backlog
+        </div>
         <Container>
-          <>
-            <Intro />
+          <div className="grid grid-cols-2 md:grid-cols-3 mb-10">
             {issues
               .filter((issue) => issue.state === "open")
               .map((issue, key) => (
                 <Issue key={key} issue={issue} />
               ))}
+          </div>
+        </Container>
+        <div className="text-8xl font-extralight mb-5 sticky top-0 bg-white p-5">
+          Closed
+        </div>
+        <Container>
+          <div className="grid grid-cols-2 md:grid-cols-3 mb-10">
             {issues
               .filter((issue) => issue.state === "closed")
               .map((issue, key) => (
                 <Issue key={key} issue={issue} />
               ))}
-          </>
+          </div>
         </Container>
       </Layout>
     </>

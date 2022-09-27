@@ -5,6 +5,13 @@ type Issue = {
   date: string;
   description: string;
   state: string;
+  labels: (
+    | string
+    | {
+        name?: string;
+        color?: string;
+      }
+  )[];
 };
 
 export default Issue;

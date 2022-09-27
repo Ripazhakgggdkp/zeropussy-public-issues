@@ -26,8 +26,6 @@ export async function getAllPosts(): Promise<Issue[]> {
     (response, done) => response.data
   );
 
-  console.log("length", result.length);
-
   return result
     .filter((issue) => !issue.pull_request)
     .map((issue) => ({
@@ -35,5 +33,6 @@ export async function getAllPosts(): Promise<Issue[]> {
       description: issue.body,
       date: issue.updated_at,
       state: issue.state,
+      labels: issue.labels,
     }));
 }
